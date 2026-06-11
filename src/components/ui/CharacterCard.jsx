@@ -12,7 +12,9 @@ export default function CharacterCard({ character }) {
         />
       ) : (
         <>
-          <span className="text-4xl sm:text-5xl">{character.emoji}</span>
+          <span aria-hidden="true" className="text-4xl sm:text-5xl">
+            {character.emoji}
+          </span>
           <span className="text-center text-xs font-extrabold leading-tight text-white drop-shadow sm:text-sm">
             {character.name}
           </span>
