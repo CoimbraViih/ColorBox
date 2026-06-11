@@ -1,12 +1,12 @@
 # ColorBox — Plano de Desenvolvimento
 
 ## Milestone 0 — Bootstrap do Projeto
-- [ ] Inicializar projeto React + Vite com pnpm
-- [ ] Configurar Tailwind CSS v4
-- [ ] Estrutura de pastas (`src/components/sections`, `ui`, `assets`, `hooks`, `constants`)
-- [ ] Google Fonts (Poppins) no `index.html`
-- [ ] Meta Pixel placeholder no `index.html`
-- [ ] Deploy inicial na Vercel (pipeline ativo)
+- [x] Inicializar projeto React + Vite com pnpm
+- [x] Configurar Tailwind CSS v4
+- [x] Estrutura de pastas (`src/components/sections`, `ui`, `assets`, `hooks`, `constants`)
+- [x] Google Fonts (Poppins) no `index.html`
+- [x] Meta Pixel placeholder no `index.html`
+- [x] Deploy inicial na Vercel (pipeline ativo)
 
 **Entrega:** Página em branco rodando na Vercel
 
