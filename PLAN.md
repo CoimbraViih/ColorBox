@@ -13,10 +13,10 @@
 ---
 
 ## Milestone 1 — Hero Section
-- [ ] Componente `HeroSection` com headline, sub-headline, CTA
-- [ ] Botão "QUERO AGORA POR R$37" → link Hotmart
-- [ ] Imagem/mockup dos cadernos em destaque
-- [ ] Layout responsivo mobile-first
+- [x] Componente `HeroSection` com headline, sub-headline, CTA
+- [x] Botão "QUERO AGORA POR R$37" → link Hotmart
+- [x] Imagem/mockup dos cadernos em destaque (mockup CSS — trocar por artes reais depois)
+- [x] Layout responsivo mobile-first
 
 **Entrega:** Primeira dobra da página convertendo
 
