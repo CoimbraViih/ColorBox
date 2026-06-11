@@ -8,7 +8,7 @@
 - [x] Meta Pixel placeholder no `index.html`
 - [x] Deploy inicial na Vercel (pipeline ativo)
 
-**Entrega:** Página em branco rodando na Vercel
+**Entrega:** ✅ Página em branco rodando na Vercel — https://colorbox-two.vercel.app (pipeline GitHub → Vercel ativo)
 
 ---
 
