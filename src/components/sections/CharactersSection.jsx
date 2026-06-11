@@ -4,13 +4,13 @@ import { CHARACTERS } from '../../constants/characters'
 
 export default function CharactersSection() {
   return (
-    <section className="bg-white px-5 py-12 font-sans sm:py-16">
+    <section aria-labelledby="characters-heading" className="bg-white px-5 py-12 font-sans sm:py-16">
       <div className="mx-auto flex max-w-5xl flex-col items-center">
         <span className="rounded-full bg-brand-purple/10 px-5 py-2 text-sm font-bold text-brand-purple">
           🎨 Olha tudo que vem no ColorBox
         </span>
 
-        <h2 className="mt-4 text-balance text-center text-3xl font-black leading-tight text-gray-900 sm:text-4xl">
+        <h2 id="characters-heading" className="mt-4 text-balance text-center text-3xl font-black leading-tight text-gray-900 sm:text-4xl">
           São <span className="text-brand-pink">30 cadernos</span> com os
           personagens favoritos das crianças
         </h2>
