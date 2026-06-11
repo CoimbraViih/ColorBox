@@ -23,9 +23,9 @@
 ---
 
 ## Milestone 2 — Seção de Personagens
-- [ ] Grid de 30 cadernos com thumbnails (imagens placeholder ou reais)
-- [ ] Dados em `constants/characters.js`
-- [ ] CTA secundário após o grid
+- [x] Grid de 30 cadernos com thumbnails (imagens placeholder ou reais)
+- [x] Dados em `constants/characters.js`
+- [x] CTA secundário após o grid
 
 **Entrega:** Vitrine completa do produto
 
