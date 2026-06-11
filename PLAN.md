@@ -27,7 +27,7 @@
 - [x] Dados em `constants/characters.js`
 - [x] CTA secundário após o grid
 
-**Entrega:** Vitrine completa do produto
+**Entrega:** ✅ Vitrine completa do produto no ar — https://colorbox-two.vercel.app (PR #3 merged)
 
 ---
 
