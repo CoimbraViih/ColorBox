@@ -50,11 +50,11 @@
 ---
 
 ## Milestone 5 — FAQ + Footer + Botão Flutuante
-- [ ] `FAQSection` com accordion (4 perguntas)
-- [ ] Footer com CTA final e link de suporte
-- [ ] Botão flutuante fixo no mobile (bottom CTA)
+- [x] `FAQSection` com accordion (4 perguntas)
+- [x] Footer com CTA final e link de suporte
+- [x] Botão flutuante fixo no mobile (bottom CTA)
 
-**Entrega:** Página 100% completa
+**Entrega:** ✅ Página 100% completa
 
 ---
 
