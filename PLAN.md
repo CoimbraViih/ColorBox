@@ -32,11 +32,11 @@
 ---
 
 ## Milestone 3 — Benefícios + Prova Social
-- [ ] Seção de 5 benefícios com ícones
-- [ ] 3–5 depoimentos com foto, nome e texto
-- [ ] Dados em `constants/testimonials.js`
+- [x] Seção de 5 benefícios com ícones
+- [x] 4 depoimentos com avatar emoji, nome e texto
+- [x] Dados em `constants/testimonials.js` e `constants/benefits.js`
 
-**Entrega:** Elementos de credibilidade e confiança
+**Entrega:** ✅ Elementos de credibilidade e confiança no ar — https://colorbox-two.vercel.app (PR #4 merged)
 
 ---
 
