@@ -1,58 +1,89 @@
+import useScrollAnimation from '../../hooks/useScrollAnimation'
 import CtaButton from '../ui/CtaButton'
+import gsap from 'gsap'
 
-const MOCKUP_NOTEBOOKS = [
-  { emoji: '❄️', name: 'Frozen', bg: 'bg-sky-400', rotate: '-rotate-6', z: 'z-10' },
-  { emoji: '🐷', name: 'Peppa Pig', bg: 'bg-brand-pink', rotate: 'rotate-0', z: 'z-20 -mt-4 sm:mt-0' },
-  { emoji: '💖', name: 'Barbie', bg: 'bg-fuchsia-500', rotate: 'rotate-6', z: 'z-10' },
+const NOTEBOOKS = [
+  { emoji: '❄️', name: 'Frozen',   color: '#818cf8', rotate: '-8deg' },
+  { emoji: '💖', name: 'Barbie',   color: '#f472b6', rotate: '0deg', marginTop: '-12px' },
+  { emoji: '🌺', name: 'Stitch',   color: '#60a5fa', rotate: '8deg' },
 ]
 
 export default function HeroSection() {
-  return (
-    <section className="bg-linear-to-br from-brand-pink via-brand-purple to-brand-orange px-5 py-12 font-sans sm:py-16">
-      <div className="mx-auto flex max-w-5xl flex-col items-center text-center">
-        <span className="rounded-full bg-white/20 px-5 py-2 text-sm font-bold text-white shadow-lg backdrop-blur-sm">
-          🔥 Entrega imediata no seu e-mail
-        </span>
+  const ref = useScrollAnimation((el) => {
+    gsap.from(el.querySelectorAll('.hero-item'), {
+      y: 40,
+      opacity: 0,
+      duration: 0.7,
+      stagger: 0.12,
+      ease: 'power3.out',
+    })
+  })
 
-        <h1 className="mt-6 text-balance text-4xl font-black leading-tight text-white drop-shadow-md sm:text-5xl md:text-6xl">
-          Chega de telas!
-          <span className="mt-2 block text-3xl sm:text-4xl md:text-5xl">
-            30 Cadernos de Colorir com os Personagens que Seu Filho{' '}
-            <span className="text-yellow-300">AMA</span>
-          </span>
+  return (
+    <section
+      ref={ref}
+      className="stars-bg relative overflow-hidden px-5 py-14 text-center"
+      style={{ background: 'linear-gradient(160deg, #1e1b4b 0%, #3b0764 50%, #1e1b4b 100%)' }}
+    >
+      <div className="glow-orb hero-item" style={{ width: '300px', height: '300px', background: 'rgba(124,58,237,0.25)', top: '-80px', left: '50%', transform: 'translateX(-50%)' }} />
+      <div className="glow-orb" style={{ width: '200px', height: '200px', background: 'rgba(219,39,119,0.15)', bottom: '0', right: '-50px' }} />
+
+      <div className="relative mx-auto max-w-md">
+        <div className="hero-item mb-5 inline-flex items-center gap-2 rounded-full px-5 py-2 text-sm font-bold text-purple-200"
+          style={{ background: 'rgba(167,139,250,0.15)', border: '1px solid rgba(167,139,250,0.3)' }}>
+          ✨ ACESSO IMEDIATO APÓS A COMPRA
+        </div>
+
+        <h1 className="hero-item mb-4 text-4xl font-black leading-[1.1] text-white md:text-5xl">
+          Seu Filho Vai{' '}
+          <span className="gradient-text">Largar o Celular</span>
+          {' '}por Horas
         </h1>
 
-        <p className="mt-5 max-w-2xl text-balance text-lg font-semibold text-white/90 sm:text-xl">
-          Frozen, Barbie, Peppa Pig, Moana, Stitch e muito mais. PDF para
-          imprimir quantas vezes quiser. 🎨
+        <p className="hero-item mb-8 text-base font-semibold leading-relaxed text-purple-200 md:text-lg">
+          30 Cadernos para Colorir em PDF com os Personagens que Ele Mais Ama —
+          Frozen, Barbie, Stitch, Moana, Patrulha Canina e muito mais!
         </p>
 
-        {/* Mockup CSS dos cadernos — trocar por <img> quando houver artes reais */}
-        <div className="relative mt-10 flex items-center justify-center">
-          {MOCKUP_NOTEBOOKS.map((notebook) => (
+        {/* Mockup cadernos */}
+        <div className="hero-item relative mb-8 flex items-center justify-center gap-0">
+          {NOTEBOOKS.map((nb) => (
             <div
-              key={notebook.name}
-              className={`${notebook.bg} ${notebook.rotate} ${notebook.z} -mx-3 flex h-44 w-32 flex-col items-center justify-center gap-2 rounded-2xl border-4 border-white shadow-2xl shadow-black/40 sm:h-56 sm:w-40`}
+              key={nb.name}
+              className="float-anim relative -mx-2 flex h-40 w-28 flex-col items-center justify-center gap-2 rounded-2xl shadow-2xl md:h-48 md:w-36"
+              style={{
+                background: `linear-gradient(135deg, ${nb.color}, ${nb.color}cc)`,
+                border: '3px solid rgba(255,255,255,0.3)',
+                transform: `rotate(${nb.rotate})`,
+                marginTop: nb.marginTop || '0',
+                boxShadow: `0 8px 32px ${nb.color}66`,
+                animationDelay: nb.marginTop ? '0.5s' : '0s',
+              }}
             >
-              <span className="text-5xl sm:text-6xl">{notebook.emoji}</span>
-              <span className="px-2 text-center text-sm font-extrabold text-white drop-shadow sm:text-base">
-                {notebook.name}
-              </span>
+              <span className="text-5xl">{nb.emoji}</span>
+              <span className="px-2 text-center text-xs font-extrabold text-white drop-shadow">{nb.name}</span>
             </div>
           ))}
-          <span className="absolute -right-4 -top-4 z-30 rounded-full bg-yellow-300 px-4 py-2 text-sm font-black text-brand-purple shadow-xl sm:-right-8">
+          <span
+            className="absolute -right-2 -top-3 z-10 rounded-full px-3 py-1 text-xs font-black text-purple-900"
+            style={{ background: '#fde68a', boxShadow: '0 2px 12px rgba(253,230,138,0.6)' }}
+          >
             30 cadernos!
           </span>
         </div>
 
-        <div className="mt-10 w-full max-w-md">
-          <CtaButton />
+        <div className="hero-item cta-section-anchor mb-4">
+          <CtaButton size="xl" />
         </div>
 
-        <p className="mt-5 text-sm font-semibold text-white/85 sm:text-base">
-          ✅ Acesso imediato &nbsp;•&nbsp; 🔒 Compra segura Hotmart &nbsp;•&nbsp;
-          💜 Garantia de 7 dias
+        <p className="hero-item mb-5 text-sm font-semibold text-purple-300">
+          ⚡ Oferta por tempo limitado &nbsp;|&nbsp; 🔒 Compra 100% segura
         </p>
+
+        <div className="hero-item inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-bold text-yellow-300"
+          style={{ background: 'rgba(253,230,138,0.1)', border: '1px solid rgba(253,230,138,0.2)' }}>
+          ⭐⭐⭐⭐⭐ Mais de 3.200 mães satisfeitas
+        </div>
       </div>
     </section>
   )
