@@ -1,28 +1,53 @@
+import { motion } from 'framer-motion'
 import { TESTIMONIALS } from '../../constants/testimonials'
 
 export default function TestimonialsSection() {
   return (
-    <section className="bg-linear-to-br from-brand-purple to-brand-pink px-5 py-12 font-sans sm:py-16">
-      <div className="mx-auto max-w-5xl">
-        <h2 className="mb-10 text-center text-3xl font-black text-white drop-shadow-md sm:text-4xl">
-          O que as mães estão dizendo 💬
-        </h2>
+    <section
+      className="stars-bg relative overflow-hidden px-5 py-16"
+      style={{ background: 'linear-gradient(160deg, #1e1b4b 0%, #2d1b69 100%)' }}
+    >
+      <div className="glow-orb" style={{ width: '220px', height: '220px', background: 'rgba(244,114,182,0.15)', top: '-30px', right: '-40px' }} />
 
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {TESTIMONIALS.map((t) => (
-            <div
+      <div className="relative mx-auto max-w-md">
+        <h2 className="mb-2 text-center text-3xl font-black text-white">
+          O Que as Mães{' '}
+          <span className="gradient-text">Estão Falando:</span>
+        </h2>
+        <p className="mb-8 text-center text-sm font-bold text-yellow-300">
+          ⭐⭐⭐⭐⭐ Avaliação média 4.9/5
+        </p>
+
+        {/* Scroll horizontal no mobile */}
+        <div className="-mx-5 flex gap-4 overflow-x-auto px-5 pb-4 md:mx-0 md:flex-col md:px-0">
+          {TESTIMONIALS.slice(0, 3).map((t, i) => (
+            <motion.div
               key={t.id}
-              className="flex flex-col gap-4 rounded-2xl bg-white p-6 shadow-xl"
+              className="w-72 flex-shrink-0 rounded-2xl p-5 md:w-full"
+              style={{
+                background: 'rgba(0,0,0,0.35)',
+                border: '1px solid rgba(167,139,250,0.2)',
+              }}
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
             >
-              <span className="text-5xl">{t.avatar}</span>
-              <p className="flex-1 text-sm italic leading-relaxed text-gray-700">
-                "{t.text}"
-              </p>
-              <div>
-                <p className="font-bold text-gray-900">{t.name}</p>
-                <p className="text-sm text-gray-500">{t.role}</p>
+              <div className="mb-3 flex items-center gap-3">
+                <div
+                  className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full text-2xl"
+                  style={{ background: 'linear-gradient(135deg, #7c3aed, #db2777)' }}
+                >
+                  {t.avatar}
+                </div>
+                <div>
+                  <p className="font-black text-white">{t.name}</p>
+                  <p className="text-xs text-purple-300">{t.role}</p>
+                </div>
               </div>
-            </div>
+              <p className="mb-2 text-xs font-bold text-yellow-300">⭐⭐⭐⭐⭐</p>
+              <p className="text-sm leading-relaxed text-purple-100">"{t.text}"</p>
+            </motion.div>
           ))}
         </div>
       </div>
