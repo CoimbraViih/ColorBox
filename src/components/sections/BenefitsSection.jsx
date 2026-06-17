@@ -1,50 +1,86 @@
-import { BENEFITS, SOCIAL_PROOF_COUNT } from '../../constants/benefits'
+import { motion } from 'framer-motion'
+import useScrollAnimation from '../../hooks/useScrollAnimation'
+import CtaButton from '../ui/CtaButton'
+import gsap from 'gsap'
+
+const BENEFITS = [
+  {
+    icon: '✨',
+    headline: 'Crianças mais calmas em 15 minutos',
+    text: 'A atividade de colorir ativa o foco e reduz a ansiedade. Você vai notar a diferença na primeira vez.',
+  },
+  {
+    icon: '🎨',
+    headline: 'Personagens que elas já conhecem e amam',
+    text: 'Frozen, Barbie, Stitch, Patrulha Canina, Pokémon e muito mais — o que a sua criança ama, está aqui.',
+  },
+  {
+    icon: '💝',
+    headline: 'O presente perfeito que educa sem tela',
+    text: 'Uma compra. Infinitas impressões. Você pode usar com vários filhos, na escola, na casa da avó.',
+  },
+]
 
 export default function BenefitsSection() {
+  const ref = useScrollAnimation((el) => {
+    gsap.from(el.querySelectorAll('.benefit-card'), {
+      y: 30,
+      opacity: 0,
+      duration: 0.6,
+      stagger: 0.15,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 75%',
+      },
+    })
+  })
+
   return (
-    <section className="bg-white px-5 py-12 font-sans sm:py-16">
-      <div className="mx-auto max-w-5xl">
-        <h2 className="text-center text-3xl font-black leading-tight text-gray-800 sm:text-4xl">
-          Por que as mães{' '}
-          <span className="bg-linear-to-r from-brand-pink to-brand-purple bg-clip-text text-transparent">
-            amam o ColorBox?
-          </span>
-        </h2>
-        <p className="mx-auto mt-3 max-w-xl text-center text-base text-gray-500 sm:text-lg">
-          Tudo que uma mãe precisa para manter o filho entretido e longe das telas.
+    <section
+      ref={ref}
+      className="stars-bg relative overflow-hidden px-5 py-16"
+      style={{ background: 'linear-gradient(160deg, #1e1b4b 0%, #2d1b69 100%)' }}
+    >
+      <div className="glow-orb" style={{ width: '200px', height: '200px', background: 'rgba(244,114,182,0.2)', top: '20px', left: '-40px' }} />
+
+      <div className="relative mx-auto max-w-md">
+        <div className="mb-2 text-center">
+          <span className="text-3xl font-black" style={{ color: '#f472b6' }}>Filhos VÃO AMAR</span>
+        </div>
+        <div className="mb-8 text-center">
+          <span className="text-3xl font-black" style={{ color: '#fb923c' }}>Você VAI AGRADECER</span>
+        </div>
+
+        <p className="mb-8 rounded-2xl p-4 text-center text-sm font-semibold text-purple-100"
+          style={{ background: 'rgba(251,146,60,0.12)', border: '1px solid rgba(251,146,60,0.2)' }}>
+          Transforme momentos de agitação em pura diversão criativa com os 30 Cadernos ColorBox.
         </p>
 
-        <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2">
-          {BENEFITS.map((benefit) => (
-            <div
-              key={benefit.title}
-              className="flex items-start gap-4 rounded-2xl bg-white p-5 shadow-md shadow-gray-100 transition-shadow hover:shadow-lg"
+        <div className="mb-8 flex flex-col gap-4">
+          {BENEFITS.map((b, i) => (
+            <motion.div
+              key={i}
+              className="benefit-card rounded-2xl p-5"
+              style={{
+                background: 'rgba(0,0,0,0.3)',
+                border: '1px solid rgba(167,139,250,0.2)',
+              }}
+              whileHover={{
+                borderColor: 'rgba(167,139,250,0.5)',
+                boxShadow: '0 0 24px rgba(167,139,250,0.2)',
+              }}
             >
-              <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-linear-to-br from-brand-pink/10 to-brand-purple/10 text-3xl">
-                {benefit.emoji}
-              </span>
-              <div>
-                <h3 className="text-base font-bold text-gray-800 sm:text-lg">
-                  {benefit.title}
-                </h3>
-                <p className="mt-1 text-sm leading-relaxed text-gray-500 sm:text-base">
-                  {benefit.description}
-                </p>
+              <div className="mb-2 flex items-center gap-3">
+                <span className="text-2xl">{b.icon}</span>
+                <h3 className="font-black text-white">{b.headline}</h3>
               </div>
-            </div>
+              <p className="text-sm leading-relaxed text-purple-200">{b.text}</p>
+            </motion.div>
           ))}
-
-          <div
-            key="social-proof"
-            className="flex items-center justify-center rounded-2xl bg-linear-to-br from-brand-pink/5 to-brand-purple/5 p-5 shadow-md shadow-gray-100"
-          >
-            <p className="text-center text-sm font-semibold text-brand-purple sm:text-base">
-              ✅ Mais de{' '}
-              <span className="font-black text-brand-pink">{SOCIAL_PROOF_COUNT} famílias</span>{' '}
-              já aprovaram o ColorBox
-            </p>
-          </div>
         </div>
+
+        <CtaButton label="QUERO O COLORBOX POR R$37 →" size="xl" />
       </div>
     </section>
   )
