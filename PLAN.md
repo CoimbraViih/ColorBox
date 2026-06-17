@@ -41,11 +41,11 @@
 ---
 
 ## Milestone 4 — Urgência + Garantia
-- [ ] Hook `useCountdown` com timer regressivo
-- [ ] Componente `UrgencySection` com contador visual
-- [ ] `GuaranteeSection` com selo 7 dias e texto de segurança
+- [x] Hook `useCountdown` com timer regressivo
+- [x] Componente `UrgencySection` com contador visual
+- [x] `GuaranteeSection` com selo 7 dias e texto de segurança
 
-**Entrega:** Elementos de conversão e remoção de objeções
+**Entrega:** ✅ Elementos de conversão e remoção de objeções no ar — https://colorbox-two.vercel.app (PR #5 merged)
 
 ---
 
