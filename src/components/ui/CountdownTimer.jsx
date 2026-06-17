@@ -1,29 +1,41 @@
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import useCountdown from '../../hooks/useCountdown'
 
 function Digit({ value, label }) {
   const formatted = String(value).padStart(2, '0')
   return (
-    <div className="flex flex-col items-center gap-1">
-      <motion.div
-        key={formatted}
-        className="flex items-center justify-center rounded-xl font-black text-white"
-        style={{
-          background: 'rgba(0,0,0,0.5)',
-          border: '1px solid rgba(167,139,250,0.3)',
-          minWidth: '72px',
-          fontSize: '3rem',
-          lineHeight: 1,
-          padding: '12px 8px',
-          boxShadow: '0 0 20px rgba(167,139,250,0.2)',
-        }}
-        initial={{ scale: 1.08 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 0.2 }}
-      >
-        {formatted}
-      </motion.div>
-      <span className="text-[10px] font-bold tracking-widest text-purple-300">{label}</span>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+      <div style={{ position: 'relative', overflow: 'hidden' }}>
+        <AnimatePresence mode="popLayout">
+          <motion.span
+            key={formatted}
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            transition={{ duration: 0.25, ease: 'easeOut' }}
+            className="gradient-text-gold"
+            style={{
+              display: 'block',
+              fontFamily: "'Space Grotesk', sans-serif",
+              fontWeight: 800,
+              fontSize: 'clamp(3rem, 8vw, 5rem)',
+              lineHeight: 1,
+            }}
+          >
+            {formatted}
+          </motion.span>
+        </AnimatePresence>
+      </div>
+      <span style={{
+        fontFamily: "'Inter', sans-serif",
+        fontWeight: 600,
+        fontSize: '10px',
+        textTransform: 'uppercase',
+        letterSpacing: '0.1em',
+        color: 'rgba(255,255,255,0.6)',
+      }}>
+        {label}
+      </span>
     </div>
   )
 }
@@ -32,11 +44,27 @@ export default function CountdownTimer() {
   const { hours, minutes, seconds } = useCountdown()
 
   return (
-    <div className="flex items-start justify-center gap-3">
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '16px' }}>
       <Digit value={hours} label="HORAS" />
-      <span className="mt-3 text-4xl font-black text-purple-300">:</span>
+      <span style={{
+        fontFamily: "'Space Grotesk', sans-serif",
+        fontWeight: 800,
+        fontSize: 'clamp(2rem, 6vw, 3.5rem)',
+        color: '#f59e0b',
+        opacity: 0.6,
+        lineHeight: 1,
+        marginBottom: '20px',
+      }}>:</span>
       <Digit value={minutes} label="MIN" />
-      <span className="mt-3 text-4xl font-black text-purple-300">:</span>
+      <span style={{
+        fontFamily: "'Space Grotesk', sans-serif",
+        fontWeight: 800,
+        fontSize: 'clamp(2rem, 6vw, 3.5rem)',
+        color: '#f59e0b',
+        opacity: 0.6,
+        lineHeight: 1,
+        marginBottom: '20px',
+      }}>:</span>
       <Digit value={seconds} label="SEG" />
     </div>
   )

@@ -1,6 +1,7 @@
-import { useEffect } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+gsap.registerPlugin(ScrollTrigger)
+
 import HeroSection from './components/sections/HeroSection'
 import PainSection from './components/sections/PainSection'
 import BenefitsSection from './components/sections/BenefitsSection'
@@ -12,15 +13,22 @@ import FAQSection from './components/sections/FAQSection'
 import FooterSection from './components/sections/FooterSection'
 import FloatingCTA from './components/ui/FloatingCTA'
 
-gsap.registerPlugin(ScrollTrigger)
-
 export default function App() {
   return (
-    <>
-      <main
-        className="min-h-screen pb-20 md:pb-0"
-        style={{ background: 'linear-gradient(180deg, #1e1b4b 0%, #2d1b69 50%, #1e1b4b 100%)' }}
-      >
+    <div style={{ background: '#050311', minHeight: '100vh' }}>
+      {/* Ambient background orbs — posição fixa, atrás de tudo */}
+      <div className="glow-orb" style={{
+        position: 'fixed', width: '600px', height: '600px',
+        background: 'rgba(124,58,237,0.12)', top: '-200px', left: '-200px',
+        zIndex: 0, pointerEvents: 'none'
+      }} />
+      <div className="glow-orb" style={{
+        position: 'fixed', width: '500px', height: '500px',
+        background: 'rgba(236,72,153,0.08)', bottom: '-150px', right: '-100px',
+        zIndex: 0, pointerEvents: 'none'
+      }} />
+
+      <main style={{ position: 'relative', zIndex: 1 }}>
         <HeroSection />
         <PainSection />
         <BenefitsSection />
@@ -32,6 +40,6 @@ export default function App() {
         <FooterSection />
       </main>
       <FloatingCTA />
-    </>
+    </div>
   )
 }

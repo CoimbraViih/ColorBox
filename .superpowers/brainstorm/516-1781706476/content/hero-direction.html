@@ -1,0 +1,92 @@
+<h2>Direção Visual do Hero — Qual estilo te conecta mais?</h2>
+<p class="subtitle">Todos usam Poppins + paleta rosa/roxo/laranja. A diferença é a atmosfera e a composição.</p>
+
+<div class="cards">
+
+  <div class="card" data-choice="A" onclick="toggleSelect(this)">
+    <div class="card-image" style="background: linear-gradient(135deg, #c084fc 0%, #818cf8 40%, #67e8f9 100%); padding: 20px; min-height: 200px; position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+      <!-- Cloud shapes -->
+      <div style="position:absolute;top:8px;left:-10px;width:80px;height:30px;background:rgba(255,255,255,0.3);border-radius:50px;"></div>
+      <div style="position:absolute;top:20px;right:10px;width:60px;height:24px;background:rgba(255,255,255,0.2);border-radius:50px;"></div>
+      <div style="position:absolute;bottom:30px;left:15%;width:100px;height:36px;background:rgba(255,255,255,0.15);border-radius:50px;"></div>
+      <!-- Badge -->
+      <span style="background:rgba(255,255,255,0.25);border-radius:999px;padding:4px 14px;font-size:11px;font-weight:700;color:white;margin-bottom:10px;backdrop-filter:blur(4px);">✨ ACESSO IMEDIATO</span>
+      <!-- Headline -->
+      <div style="font-size:20px;font-weight:900;color:white;text-align:center;line-height:1.15;text-shadow:0 2px 8px rgba(0,0,0,0.25);">
+        Seu Filho Vai<br>Largar o Celular<br><span style="color:#fde68a;">por Horas</span>
+      </div>
+      <!-- Floating notebook mockups -->
+      <div style="display:flex;gap:6px;margin-top:14px;">
+        <div style="width:36px;height:50px;background:#f472b6;border-radius:6px;border:2px solid white;box-shadow:0 4px 12px rgba(0,0,0,0.3);transform:rotate(-8deg);display:flex;align-items:center;justify-content:center;font-size:18px;">❄️</div>
+        <div style="width:36px;height:50px;background:#a78bfa;border-radius:6px;border:2px solid white;box-shadow:0 4px 12px rgba(0,0,0,0.3);transform:rotate(0deg);margin-top:-6px;display:flex;align-items:center;justify-content:center;font-size:18px;">🐷</div>
+        <div style="width:36px;height:50px;background:#fb923c;border-radius:6px;border:2px solid white;box-shadow:0 4px 12px rgba(0,0,0,0.3);transform:rotate(8deg);display:flex;align-items:center;justify-content:center;font-size:18px;">💖</div>
+      </div>
+      <!-- CTA -->
+      <div style="margin-top:12px;background:#00C851;color:white;font-weight:900;font-size:12px;padding:8px 20px;border-radius:14px;box-shadow:0 4px 16px rgba(0,200,81,0.5);">QUERO POR R$37 →</div>
+    </div>
+    <div class="card-body">
+      <h3>A — Céu Disney</h3>
+      <p>Gradiente lavanda → azul → ciano. Nuvens flutuando, cadernos em perspectiva isométrica, badges glossy. Sensação de manhã mágica.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="B" onclick="toggleSelect(this)">
+    <div class="card-image" style="background: linear-gradient(160deg, #fdf2f8 0%, #fce7f3 30%, #fff7ed 60%, #fef3c7 100%); padding: 20px; min-height: 200px; position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+      <!-- Soft light rays -->
+      <div style="position:absolute;top:-20px;left:50%;transform:translateX(-50%);width:200px;height:200px;background:radial-gradient(circle,rgba(255,182,255,0.4) 0%,transparent 70%);"></div>
+      <!-- Sparkles -->
+      <span style="position:absolute;top:15px;right:25px;font-size:16px;opacity:0.6;">✨</span>
+      <span style="position:absolute;top:35px;left:20px;font-size:12px;opacity:0.5;">⭐</span>
+      <span style="position:absolute;bottom:40px;right:15px;font-size:14px;opacity:0.5;">🌟</span>
+      <!-- Badge -->
+      <span style="background:linear-gradient(90deg,#f9a8d4,#c084fc);border-radius:999px;padding:4px 14px;font-size:11px;font-weight:700;color:white;margin-bottom:10px;">✨ ACESSO IMEDIATO</span>
+      <!-- Headline -->
+      <div style="font-size:20px;font-weight:900;color:#7c3aed;text-align:center;line-height:1.15;text-shadow:0 1px 0 rgba(255,255,255,0.8);">
+        Seu Filho Vai<br>Largar o Celular<br><span style="color:#ec4899;">por Horas</span>
+      </div>
+      <!-- Stacked notebooks perspective -->
+      <div style="display:flex;gap:4px;margin-top:14px;position:relative;">
+        <div style="width:50px;height:64px;background:linear-gradient(135deg,#f472b6,#ec4899);border-radius:6px;box-shadow:4px 4px 0 #be185d,0 8px 20px rgba(0,0,0,0.2);display:flex;align-items:center;justify-content:center;font-size:22px;">❄️</div>
+        <div style="width:50px;height:64px;background:linear-gradient(135deg,#a78bfa,#7c3aed);border-radius:6px;box-shadow:4px 4px 0 #5b21b6,0 8px 20px rgba(0,0,0,0.2);display:flex;align-items:center;justify-content:center;font-size:22px;margin-top:-8px;">🐷</div>
+        <div style="width:50px;height:64px;background:linear-gradient(135deg,#fb923c,#ea580c);border-radius:6px;box-shadow:4px 4px 0 #c2410c,0 8px 20px rgba(0,0,0,0.2);display:flex;align-items:center;justify-content:center;font-size:22px;">💖</div>
+        <div style="position:absolute;top:-10px;right:-8px;background:#fde68a;color:#7c3aed;font-weight:900;font-size:10px;padding:3px 8px;border-radius:999px;box-shadow:0 2px 8px rgba(0,0,0,0.2);">30!</div>
+      </div>
+      <!-- CTA -->
+      <div style="margin-top:12px;background:#00C851;color:white;font-weight:900;font-size:12px;padding:8px 20px;border-radius:14px;box-shadow:0 4px 16px rgba(0,200,81,0.4);">QUERO POR R$37 →</div>
+    </div>
+    <div class="card-body">
+      <h3>B — Creme Encantado</h3>
+      <p>Fundo creme/pêssego suave, cadernos em perspectiva com sombra sólida (flat 3D), luz central difusa, sparkles dourados. Sensação de livro de histórias.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="C" onclick="toggleSelect(this)">
+    <div class="card-image" style="background: linear-gradient(150deg, #1e1b4b 0%, #4c1d95 35%, #831843 65%, #9f1239 100%); padding: 20px; min-height: 200px; position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+      <!-- Stars -->
+      <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.8) 1px,transparent 1px);background-size:20px 20px;opacity:0.15;"></div>
+      <!-- Glow -->
+      <div style="position:absolute;top:20%;left:50%;transform:translate(-50%,-50%);width:180px;height:80px;background:rgba(233,213,255,0.2);border-radius:50%;filter:blur(20px);"></div>
+      <!-- Badge -->
+      <span style="background:rgba(233,213,255,0.2);border:1px solid rgba(233,213,255,0.4);border-radius:999px;padding:4px 14px;font-size:11px;font-weight:700;color:#e9d5ff;margin-bottom:10px;">✨ ACESSO IMEDIATO</span>
+      <!-- Headline -->
+      <div style="font-size:20px;font-weight:900;color:white;text-align:center;line-height:1.15;">
+        Seu Filho Vai<br>Largar o Celular<br><span style="background:linear-gradient(90deg,#fde68a,#fb923c);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">por Horas</span>
+      </div>
+      <!-- Notebooks with glow -->
+      <div style="display:flex;gap:6px;margin-top:14px;">
+        <div style="width:40px;height:54px;background:linear-gradient(135deg,#f472b6,#db2777);border-radius:8px;box-shadow:0 0 20px rgba(244,114,182,0.6),0 4px 12px rgba(0,0,0,0.4);display:flex;align-items:center;justify-content:center;font-size:20px;transform:rotate(-6deg);">❄️</div>
+        <div style="width:40px;height:54px;background:linear-gradient(135deg,#818cf8,#6366f1);border-radius:8px;box-shadow:0 0 20px rgba(129,140,248,0.6),0 4px 12px rgba(0,0,0,0.4);display:flex;align-items:center;justify-content:center;font-size:20px;">🐷</div>
+        <div style="width:40px;height:54px;background:linear-gradient(135deg,#fb923c,#f97316);border-radius:8px;box-shadow:0 0 20px rgba(251,146,60,0.6),0 4px 12px rgba(0,0,0,0.4);display:flex;align-items:center;justify-content:center;font-size:20px;transform:rotate(6deg);">💖</div>
+      </div>
+      <!-- CTA -->
+      <div style="margin-top:12px;background:linear-gradient(90deg,#00C851,#00a040);color:white;font-weight:900;font-size:12px;padding:8px 20px;border-radius:14px;box-shadow:0 4px 20px rgba(0,200,81,0.6);">QUERO POR R$37 →</div>
+    </div>
+    <div class="card-body">
+      <h3>C — Noite Pixar</h3>
+      <p>Fundo roxo escuro / noite estrelada, glow neon nos cadernos, texto com gradiente dourado. Alto contraste. Sensação de cinema blockbuster.</p>
+    </div>
+  </div>
+
+</div>
+
+<p class="subtitle" style="margin-top:16px;">Clique para selecionar — ou diga no terminal qual preferiu e por quê.</p>

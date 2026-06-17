@@ -7,22 +7,31 @@ export default function FloatingCTA() {
   const [hidden, setHidden] = useState(false)
 
   useEffect(() => {
-    // Aparece após 2s
-    const t = setTimeout(() => setVisible(true), 2000)
+    // Aparece após 3 segundos
+    const t = setTimeout(() => setVisible(true), 3000)
 
-    // Oculta quando qualquer .cta-section-anchor está no viewport
-    const anchors = document.querySelectorAll('.cta-section-anchor')
-    if (!anchors.length) return () => clearTimeout(t)
+    // Some quando .cta-section-anchor está visível
+    const observe = () => {
+      const anchors = document.querySelectorAll('.cta-section-anchor')
+      if (!anchors.length) return
 
-    const obs = new IntersectionObserver(
-      (entries) => setHidden(entries.some(e => e.isIntersecting)),
-      { threshold: 0.5 }
-    )
-    anchors.forEach(a => obs.observe(a))
+      const obs = new IntersectionObserver(
+        (entries) => setHidden(entries.some(e => e.isIntersecting)),
+        { threshold: 0.5 }
+      )
+      anchors.forEach(a => obs.observe(a))
+      return obs
+    }
+
+    // Pequeno delay para o DOM estar montado
+    const obsTimer = setTimeout(() => {
+      const obs = observe()
+      return () => obs && obs.disconnect()
+    }, 500)
 
     return () => {
       clearTimeout(t)
-      obs.disconnect()
+      clearTimeout(obsTimer)
     }
   }, [])
 
@@ -30,24 +39,54 @@ export default function FloatingCTA() {
     <AnimatePresence>
       {visible && !hidden && (
         <motion.div
-          className="fixed bottom-0 left-0 right-0 z-50 px-4 pb-4 md:hidden"
-          initial={{ y: 80, opacity: 0 }}
+          className="md:hidden"
+          style={{
+            position: 'fixed',
+            bottom: 0,
+            left: 0,
+            right: 0,
+            zIndex: 50,
+            padding: '12px 16px 20px',
+            background: 'rgba(5,3,17,0.95)',
+            backdropFilter: 'blur(16px)',
+            WebkitBackdropFilter: 'blur(16px)',
+            borderTop: '1px solid rgba(255,255,255,0.1)',
+          }}
+          initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          exit={{ y: 80, opacity: 0 }}
-          transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+          exit={{ y: 100, opacity: 0 }}
+          transition={{ type: 'spring', stiffness: 250, damping: 30 }}
         >
           <motion.a
             href={HOTMART_CHECKOUT_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="cta-pulse flex w-full items-center justify-center rounded-2xl py-4 text-base font-black text-white"
-            style={{ background: 'linear-gradient(135deg, #00C851, #00a040)', minHeight: '56px' }}
+            className="cta-pulse"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '8px',
+              width: '100%',
+              minHeight: '52px',
+              background: 'linear-gradient(135deg, #00C851, #00a843)',
+              color: '#ffffff',
+              fontFamily: "'Space Grotesk', sans-serif",
+              fontWeight: 800,
+              fontSize: '1rem',
+              textTransform: 'uppercase',
+              letterSpacing: '0.04em',
+              borderRadius: '12px',
+              textDecoration: 'none',
+              cursor: 'pointer',
+            }}
             whileTap={{ scale: 0.97 }}
             onClick={() => {
               if (typeof fbq !== 'undefined') fbq('track', 'InitiateCheckout')
             }}
           >
-            QUERO POR R$37 →
+            QUERO O COLORBOX
+            <span style={{ color: '#fde68a', fontWeight: 900 }}>R$37</span>
           </motion.a>
         </motion.div>
       )}

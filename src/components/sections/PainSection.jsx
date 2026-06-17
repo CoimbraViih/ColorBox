@@ -1,79 +1,109 @@
-import useScrollAnimation from '../../hooks/useScrollAnimation'
-import gsap from 'gsap'
+import { motion } from 'framer-motion'
 
 const PAIN_POINTS = [
-  'Seu filho está sempre no celular ou tablet e você não sabe como mudar isso?',
-  'As tardes em casa viram uma batalha de "não sei o que fazer"?',
-  'Você quer uma atividade criativa, mas cadernos de papelaria são caros e acabam rápido?',
-  'Queria dar algo especial pro seu filho mas sem gastar muito?',
+  { emoji: '📱', title: 'Celular o dia todo', text: 'Seu filho está preso na tela e você não sabe como mudar isso?' },
+  { emoji: '😔', title: 'Tardes sem graça', text: 'As tardes em casa viram uma batalha de "não sei o que fazer"?' },
+  { emoji: '💸', title: 'Cadernos caros', text: 'Atividades criativas custam caro — e acabam em poucos dias?' },
+  { emoji: '🎁', title: 'Sem ideia de presente', text: 'Quer dar algo especial pro seu filho mas sem gastar muito?' },
 ]
 
 export default function PainSection() {
-  const ref = useScrollAnimation((el) => {
-    gsap.from(el.querySelectorAll('.pain-item'), {
-      x: -50,
-      opacity: 0,
-      duration: 0.6,
-      stagger: 0.15,
-      ease: 'power2.out',
-      scrollTrigger: {
-        trigger: el,
-        start: 'top 80%',
-      },
-    })
-    gsap.from(el.querySelector('.pain-solution'), {
-      scale: 0.85,
-      opacity: 0,
-      duration: 0.6,
-      ease: 'back.out(1.7)',
-      scrollTrigger: {
-        trigger: el.querySelector('.pain-solution'),
-        start: 'top 85%',
-      },
-    })
-  })
+  const container = {
+    hidden: {},
+    visible: { transition: { staggerChildren: 0.12 } }
+  }
+  const card = {
+    hidden: { opacity: 0, x: -40 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } }
+  }
 
   return (
     <section
-      ref={ref}
-      className="stars-bg relative overflow-hidden px-5 py-16"
-      style={{ background: 'linear-gradient(160deg, #2d1b69 0%, #1e1b4b 50%, #3b0764 100%)' }}
+      className="cosmos-bg section-pad"
+      style={{ background: 'linear-gradient(180deg, #050311 0%, #0e0a2a 50%, #050311 100%)' }}
     >
-      <div className="glow-orb" style={{ width: '250px', height: '250px', background: 'rgba(219,39,119,0.15)', top: '-40px', right: '-60px' }} />
+      <div style={{ maxWidth: '520px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
 
-      <div className="relative mx-auto max-w-md">
-        <h2 className="mb-8 text-center text-3xl font-black leading-tight text-white md:text-4xl">
-          Você Reconhece{' '}
-          <span className="gradient-text">Essa Situação?</span>
-        </h2>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          style={{ textAlign: 'center', marginBottom: '48px' }}
+        >
+          <h2 style={{
+            fontFamily: "'Space Grotesk', sans-serif",
+            fontSize: 'clamp(1.8rem, 5vw, 2.8rem)',
+            fontWeight: 800,
+            lineHeight: 1.15,
+            color: '#ffffff',
+          }}>
+            Você Reconhece<br />
+            <span className="gradient-text">Essa Situação?</span>
+          </h2>
+        </motion.div>
 
-        <div className="mb-8 flex flex-col gap-4">
-          {PAIN_POINTS.map((point, i) => (
-            <div
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '40px' }}
+        >
+          {PAIN_POINTS.map((p, i) => (
+            <motion.div
               key={i}
-              className="pain-item flex items-start gap-3 rounded-2xl p-4"
+              variants={card}
+              whileHover={{ x: 6 }}
               style={{
-                background: 'rgba(0,0,0,0.3)',
-                border: '1px solid rgba(167,139,250,0.15)',
+                display: 'flex',
+                alignItems: 'flex-start',
+                gap: '16px',
+                padding: '20px 24px',
+                borderRadius: '16px',
+                background: 'rgba(255,255,255,0.04)',
+                border: '1px solid rgba(255,255,255,0.07)',
+                cursor: 'default',
               }}
             >
-              <span className="mt-0.5 text-lg">❌</span>
-              <p className="text-sm font-semibold leading-relaxed text-purple-100">{point}</p>
-            </div>
+              <span style={{ fontSize: '1.8rem', lineHeight: 1, flexShrink: 0 }}>{p.emoji}</span>
+              <div>
+                <p style={{
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontWeight: 700,
+                  fontSize: '1rem',
+                  color: '#ffffff',
+                  marginBottom: '4px',
+                }}>{p.title}</p>
+                <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.6)', lineHeight: 1.5 }}>{p.text}</p>
+              </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        <div
-          className="pain-solution rounded-2xl p-6 text-center"
+        {/* Solution reveal */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, type: 'spring', stiffness: 200 }}
           style={{
-            background: 'linear-gradient(135deg, rgba(253,230,138,0.15), rgba(251,146,60,0.15))',
-            border: '1px solid rgba(253,230,138,0.3)',
+            padding: '28px 32px',
+            borderRadius: '20px',
+            textAlign: 'center',
+            background: 'linear-gradient(135deg, rgba(245,158,11,0.15), rgba(236,72,153,0.15))',
+            border: '1px solid rgba(245,158,11,0.3)',
           }}
         >
-          <p className="text-xl font-black text-yellow-300">
-            Seus problemas acabaram hoje! 🎉
+          <p style={{
+            fontFamily: "'Space Grotesk', sans-serif",
+            fontSize: '1.2rem',
+            fontWeight: 800,
+            color: '#fde68a',
+          }}>
+            Todos esses problemas têm uma solução por R$37 🎉
           </p>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

@@ -1,90 +1,148 @@
-import useScrollAnimation from '../../hooks/useScrollAnimation'
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { useRef } from 'react'
 import CtaButton from '../ui/CtaButton'
-import gsap from 'gsap'
-
-const NOTEBOOKS = [
-  { emoji: '❄️', name: 'Frozen',   color: '#818cf8', rotate: '-8deg' },
-  { emoji: '💖', name: 'Barbie',   color: '#f472b6', rotate: '0deg', marginTop: '-12px' },
-  { emoji: '🌺', name: 'Stitch',   color: '#60a5fa', rotate: '8deg' },
-]
 
 export default function HeroSection() {
-  const ref = useScrollAnimation((el) => {
-    gsap.from(el.querySelectorAll('.hero-item'), {
-      y: 40,
-      opacity: 0,
-      duration: 0.7,
-      stagger: 0.12,
-      ease: 'power3.out',
-    })
-  })
+  const ref = useRef(null)
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
+  const bgY = useTransform(scrollYProgress, [0, 1], ['0%', '30%'])
+  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0])
+
+  const container = {
+    hidden: {},
+    visible: { transition: { staggerChildren: 0.15, delayChildren: 0.2 } }
+  }
+  const item = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } }
+  }
 
   return (
     <section
       ref={ref}
-      className="stars-bg relative overflow-hidden px-5 py-14 text-center"
-      style={{ background: 'linear-gradient(160deg, #1e1b4b 0%, #3b0764 50%, #1e1b4b 100%)' }}
+      className="cosmos-bg"
+      style={{
+        position: 'relative',
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        overflow: 'hidden',
+        background: 'linear-gradient(160deg, #0d0820 0%, #050311 40%, #0a0520 100%)',
+      }}
     >
-      <div className="glow-orb hero-item" style={{ width: '300px', height: '300px', background: 'rgba(124,58,237,0.25)', top: '-80px', left: '50%', transform: 'translateX(-50%)' }} />
-      <div className="glow-orb" style={{ width: '200px', height: '200px', background: 'rgba(219,39,119,0.15)', bottom: '0', right: '-50px' }} />
+      {/* Parallax background orbs */}
+      <motion.div style={{ y: bgY, position: 'absolute', inset: 0, pointerEvents: 'none' }}>
+        <div className="glow-orb" style={{ width: '500px', height: '500px', background: 'rgba(124,58,237,0.2)', top: '-100px', left: '-100px' }} />
+        <div className="glow-orb" style={{ width: '400px', height: '400px', background: 'rgba(236,72,153,0.15)', top: '20%', right: '-80px' }} />
+        <div className="glow-orb" style={{ width: '300px', height: '300px', background: 'rgba(6,182,212,0.1)', bottom: '10%', left: '20%' }} />
+      </motion.div>
 
-      <div className="relative mx-auto max-w-md">
-        <div className="hero-item mb-5 inline-flex items-center gap-2 rounded-full px-5 py-2 text-sm font-bold text-purple-200"
-          style={{ background: 'rgba(167,139,250,0.15)', border: '1px solid rgba(167,139,250,0.3)' }}>
-          ✨ ACESSO IMEDIATO APÓS A COMPRA
-        </div>
+      <motion.div
+        style={{ opacity, position: 'relative', zIndex: 10, maxWidth: '520px', margin: '0 auto', padding: '96px 20px', textAlign: 'center' }}
+        variants={container}
+        initial="hidden"
+        animate="visible"
+      >
+        {/* Badge */}
+        <motion.div variants={item}>
+          <span style={{
+            display: 'inline-flex', alignItems: 'center', gap: '8px',
+            background: 'rgba(124,58,237,0.2)', border: '1px solid rgba(167,139,250,0.3)',
+            borderRadius: '99px', padding: '6px 16px', fontSize: '13px', fontWeight: 600,
+            color: '#a78bfa', marginBottom: '24px',
+          }}>
+            ✨ Kit Exclusivo · 30 Cadernos · PDF Imediato
+          </span>
+        </motion.div>
 
-        <h1 className="hero-item mb-4 text-4xl font-black leading-[1.1] text-white md:text-5xl">
+        {/* Headline */}
+        <motion.h1
+          variants={item}
+          style={{
+            fontFamily: "'Space Grotesk', sans-serif",
+            fontSize: 'clamp(2.2rem, 7vw, 3.8rem)',
+            fontWeight: 800,
+            lineHeight: 1.1,
+            letterSpacing: '-0.03em',
+            marginBottom: '20px',
+            color: '#ffffff',
+          }}
+        >
           Seu Filho Vai{' '}
           <span className="gradient-text">Largar o Celular</span>
-          {' '}por Horas
-        </h1>
+          {' '}Sozinho
+        </motion.h1>
 
-        <p className="hero-item mb-8 text-base font-semibold leading-relaxed text-purple-200 md:text-lg">
-          30 Cadernos para Colorir em PDF com os Personagens que Ele Mais Ama —
-          Frozen, Barbie, Stitch, Moana, Patrulha Canina e muito mais!
-        </p>
+        {/* Subheadline */}
+        <motion.p
+          variants={item}
+          style={{
+            fontSize: 'clamp(1rem, 3vw, 1.2rem)',
+            lineHeight: 1.7,
+            color: 'rgba(255,255,255,0.7)',
+            marginBottom: '36px',
+            maxWidth: '440px',
+            margin: '0 auto 36px',
+          }}
+        >
+          30 cadernos temáticos com os personagens favoritos das crianças — imprima infinitas vezes e transforme as tardes em casa.
+        </motion.p>
 
-        {/* Mockup cadernos */}
-        <div className="hero-item relative mb-8 flex items-center justify-center gap-0">
-          {NOTEBOOKS.map((nb) => (
-            <div
-              key={nb.name}
-              className="float-anim relative -mx-2 flex h-40 w-28 flex-col items-center justify-center gap-2 rounded-2xl shadow-2xl md:h-48 md:w-36"
+        {/* 3 notebook mockups flutuando */}
+        <motion.div
+          variants={item}
+          style={{ display: 'flex', justifyContent: 'center', gap: '12px', marginBottom: '40px', alignItems: 'flex-end' }}
+        >
+          {[
+            { img: '/cadernos/lilo.png', rot: '-8deg', delay: 0, size: '110px' },
+            { img: '/cadernos/frozen.png', rot: '0deg', delay: 0.2, size: '130px' },
+            { img: '/cadernos/barbie.png', rot: '8deg', delay: 0.4, size: '110px' },
+          ].map(({ img, rot, delay, size }, i) => (
+            <motion.div
+              key={i}
+              animate={{ y: [0, -10, 0] }}
+              transition={{ duration: 3.5, repeat: Infinity, delay, ease: 'easeInOut' }}
               style={{
-                background: `linear-gradient(135deg, ${nb.color}, ${nb.color}cc)`,
-                border: '3px solid rgba(255,255,255,0.3)',
-                transform: `rotate(${nb.rotate})`,
-                marginTop: nb.marginTop || '0',
-                boxShadow: `0 8px 32px ${nb.color}66`,
-                animationDelay: nb.marginTop ? '0.5s' : '0s',
+                width: size,
+                aspectRatio: '3/4',
+                borderRadius: '12px',
+                overflow: 'hidden',
+                transform: `rotate(${rot})`,
+                boxShadow: '0 20px 60px rgba(0,0,0,0.5)',
+                border: '2px solid rgba(255,255,255,0.1)',
+                flexShrink: 0,
               }}
             >
-              <span className="text-5xl">{nb.emoji}</span>
-              <span className="px-2 text-center text-xs font-extrabold text-white drop-shadow">{nb.name}</span>
-            </div>
+              <img src={img} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            </motion.div>
           ))}
-          <span
-            className="absolute -right-2 -top-3 z-10 rounded-full px-3 py-1 text-xs font-black text-purple-900"
-            style={{ background: '#fde68a', boxShadow: '0 2px 12px rgba(253,230,138,0.6)' }}
-          >
-            30 cadernos!
-          </span>
-        </div>
+        </motion.div>
 
-        <div className="hero-item cta-section-anchor mb-4">
-          <CtaButton size="xl" />
-        </div>
+        {/* CTA */}
+        <motion.div variants={item} className="cta-section-anchor">
+          <CtaButton label="QUERO AGORA POR R$37 →" size="xl" />
+        </motion.div>
 
-        <p className="hero-item mb-5 text-sm font-semibold text-purple-300">
-          ⚡ Oferta por tempo limitado &nbsp;|&nbsp; 🔒 Compra 100% segura
-        </p>
-
-        <div className="hero-item inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-bold text-yellow-300"
-          style={{ background: 'rgba(253,230,138,0.1)', border: '1px solid rgba(253,230,138,0.2)' }}>
-          ⭐⭐⭐⭐⭐ Mais de 3.200 mães satisfeitas
-        </div>
-      </div>
+        {/* Trust line */}
+        <motion.div
+          variants={item}
+          style={{
+            marginTop: '20px',
+            fontSize: '13px',
+            color: 'rgba(255,255,255,0.5)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '16px',
+            flexWrap: 'wrap',
+          }}
+        >
+          <span>🔒 Pagamento seguro</span>
+          <span>⚡ Acesso imediato</span>
+          <span>⭐ 3.200+ famílias</span>
+        </motion.div>
+      </motion.div>
     </section>
   )
 }

@@ -4,51 +4,102 @@ import { TESTIMONIALS } from '../../constants/testimonials'
 export default function TestimonialsSection() {
   return (
     <section
-      className="stars-bg relative overflow-hidden px-5 py-16"
-      style={{ background: 'linear-gradient(160deg, #1e1b4b 0%, #2d1b69 100%)' }}
+      className="cosmos-bg section-pad"
+      style={{ background: '#050311' }}
     >
-      <div className="glow-orb" style={{ width: '220px', height: '220px', background: 'rgba(244,114,182,0.15)', top: '-30px', right: '-40px' }} />
+      <div style={{ maxWidth: '680px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
 
-      <div className="relative mx-auto max-w-md">
-        <h2 className="mb-2 text-center text-3xl font-black text-white">
-          O Que as Mães{' '}
-          <span className="gradient-text">Estão Falando:</span>
-        </h2>
-        <p className="mb-8 text-center text-sm font-bold text-yellow-300">
-          ⭐⭐⭐⭐⭐ Avaliação média 4.9/5
-        </p>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          style={{ textAlign: 'center', marginBottom: '48px' }}
+        >
+          <div style={{ marginBottom: '12px', color: '#f59e0b', fontSize: '1.5rem' }}>⭐⭐⭐⭐⭐</div>
+          <h2 style={{
+            fontFamily: "'Space Grotesk', sans-serif",
+            fontSize: 'clamp(1.8rem, 5vw, 2.6rem)',
+            fontWeight: 800,
+            color: '#ffffff',
+            lineHeight: 1.15,
+          }}>
+            O Que as Mães<br />
+            <span className="gradient-text">Estão Falando</span>
+          </h2>
+          <p style={{ marginTop: '12px', fontSize: '0.9rem', color: 'rgba(255,255,255,0.5)' }}>
+            Avaliação média ⭐ 4.9/5 de mais de 3.200 famílias
+          </p>
+        </motion.div>
 
-        {/* Scroll horizontal no mobile */}
-        <div className="-mx-5 flex gap-4 overflow-x-auto px-5 pb-4 md:mx-0 md:flex-col md:px-0">
-          {TESTIMONIALS.slice(0, 3).map((t, i) => (
-            <motion.div
-              key={t.id}
-              className="w-72 flex-shrink-0 rounded-2xl p-5 md:w-full"
-              style={{
-                background: 'rgba(0,0,0,0.35)',
-                border: '1px solid rgba(167,139,250,0.2)',
-              }}
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-            >
-              <div className="mb-3 flex items-center gap-3">
-                <div
-                  className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full text-2xl"
-                  style={{ background: 'linear-gradient(135deg, #7c3aed, #db2777)' }}
-                >
-                  {t.avatar}
+        {/* Cards scroll horizontal mobile */}
+        <div style={{ marginLeft: '-20px', marginRight: '-20px', overflowX: 'auto', paddingLeft: '20px', paddingBottom: '16px' }}>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.15 } } }}
+            style={{ display: 'flex', gap: '16px', width: 'max-content', paddingRight: '20px' }}
+          >
+            {TESTIMONIALS.map((t, i) => (
+              <motion.div
+                key={i}
+                variants={{
+                  hidden: { opacity: 0, x: 40 },
+                  visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } }
+                }}
+                whileHover={{ y: -4 }}
+                style={{
+                  width: '300px',
+                  padding: '24px',
+                  borderRadius: '20px',
+                  flexShrink: 0,
+                  background: 'rgba(255,255,255,0.05)',
+                  backdropFilter: 'blur(12px)',
+                  WebkitBackdropFilter: 'blur(12px)',
+                  border: '1px solid rgba(255,255,255,0.08)',
+                  transition: 'all 0.3s ease',
+                }}
+              >
+                <div style={{ color: '#f59e0b', fontSize: '0.9rem', marginBottom: '12px' }}>⭐⭐⭐⭐⭐</div>
+                <p style={{
+                  fontSize: '0.9rem',
+                  color: 'rgba(255,255,255,0.8)',
+                  lineHeight: 1.6,
+                  fontStyle: 'italic',
+                  marginBottom: '20px',
+                }}>
+                  "{t.text}"
+                </p>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  <div style={{
+                    width: '40px',
+                    height: '40px',
+                    borderRadius: '50%',
+                    flexShrink: 0,
+                    background: 'linear-gradient(135deg, #7c3aed, #ec4899)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: '1.1rem',
+                    overflow: 'hidden',
+                    color: '#ffffff',
+                    fontFamily: "'Space Grotesk', sans-serif",
+                    fontWeight: 700,
+                  }}>
+                    {t.avatar
+                      ? <img src={t.avatar} alt={t.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                      : t.name[0]
+                    }
+                  </div>
+                  <div>
+                    <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: '0.9rem', color: '#ffffff' }}>{t.name}</p>
+                    <p style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.45)' }}>{t.role || 'Mãe'}</p>
+                  </div>
                 </div>
-                <div>
-                  <p className="font-black text-white">{t.name}</p>
-                  <p className="text-xs text-purple-300">{t.role}</p>
-                </div>
-              </div>
-              <p className="mb-2 text-xs font-bold text-yellow-300">⭐⭐⭐⭐⭐</p>
-              <p className="text-sm leading-relaxed text-purple-100">"{t.text}"</p>
-            </motion.div>
-          ))}
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </div>
     </section>

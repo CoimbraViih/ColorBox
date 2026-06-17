@@ -1,46 +1,62 @@
-import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useState } from 'react'
 import { FAQS } from '../../constants/faqs'
 
-function FAQItem({ faq }) {
+function FAQItem({ question, answer }) {
   const [open, setOpen] = useState(false)
-
   return (
-    <div
-      className="overflow-hidden rounded-2xl"
-      style={{
-        background: 'rgba(0,0,0,0.3)',
-        border: `1px solid ${open ? 'rgba(167,139,250,0.5)' : 'rgba(167,139,250,0.2)'}`,
-        transition: 'border-color 0.2s',
-      }}
-    >
+    <div style={{
+      borderRadius: '16px',
+      overflow: 'hidden',
+      border: `1px solid ${open ? 'rgba(167,139,250,0.4)' : 'rgba(255,255,255,0.07)'}`,
+      background: open ? 'rgba(124,58,237,0.08)' : 'rgba(255,255,255,0.04)',
+      transition: 'all 0.3s ease',
+      marginBottom: '12px',
+    }}>
       <button
         type="button"
-        className="flex w-full items-center justify-between gap-3 px-5 py-4 text-left"
-        onClick={() => setOpen(v => !v)}
-        aria-expanded={open}
+        onClick={() => setOpen(!open)}
+        style={{
+          width: '100%',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          padding: '20px 24px',
+          background: 'none',
+          border: 'none',
+          color: '#ffffff',
+          cursor: 'pointer',
+          textAlign: 'left',
+          gap: '16px',
+        }}
       >
-        <span className="font-bold text-white">{faq.question}</span>
+        <span style={{
+          fontFamily: "'Space Grotesk', sans-serif",
+          fontWeight: 700,
+          fontSize: '0.95rem',
+          lineHeight: 1.4,
+        }}>{question}</span>
         <motion.span
-          className="flex-shrink-0 text-purple-300 text-lg"
           animate={{ rotate: open ? 45 : 0 }}
-          transition={{ duration: 0.2 }}
-        >
-          +
-        </motion.span>
+          transition={{ duration: 0.3 }}
+          style={{ fontSize: '1.4rem', color: '#a78bfa', flexShrink: 0, lineHeight: 1 }}
+        >+</motion.span>
       </button>
-
-      <AnimatePresence initial={false}>
+      <AnimatePresence>
         {open && (
           <motion.div
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.25, ease: 'easeInOut' }}
+            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            style={{ overflow: 'hidden' }}
           >
-            <p className="px-5 pb-5 text-sm leading-relaxed text-purple-200">
-              {faq.answer}
-            </p>
+            <p style={{
+              padding: '0 24px 20px',
+              fontSize: '0.9rem',
+              color: 'rgba(255,255,255,0.65)',
+              lineHeight: 1.7,
+            }}>{answer}</p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -51,19 +67,39 @@ function FAQItem({ faq }) {
 export default function FAQSection() {
   return (
     <section
-      className="stars-bg relative overflow-hidden px-5 py-16"
-      style={{ background: 'linear-gradient(160deg, #1e1b4b 0%, #2d1b69 100%)' }}
+      className="cosmos-bg section-pad"
+      style={{ background: '#050311' }}
     >
-      <div className="relative mx-auto max-w-md">
-        <h2 className="mb-8 text-center text-3xl font-black text-white">
-          Perguntas <span className="gradient-text">Frequentes</span>
-        </h2>
+      <div style={{ maxWidth: '560px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
 
-        <div className="flex flex-col gap-3">
-          {FAQS.map(faq => (
-            <FAQItem key={faq.id} faq={faq} />
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          style={{ textAlign: 'center', marginBottom: '40px' }}
+        >
+          <h2 style={{
+            fontFamily: "'Space Grotesk', sans-serif",
+            fontSize: 'clamp(1.8rem, 5vw, 2.6rem)',
+            fontWeight: 800,
+            color: '#ffffff',
+            lineHeight: 1.15,
+          }}>
+            Perguntas <span className="gradient-text">Frequentes</span>
+          </h2>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+        >
+          {FAQS.map((faq) => (
+            <FAQItem key={faq.id} question={faq.question} answer={faq.answer} />
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )
