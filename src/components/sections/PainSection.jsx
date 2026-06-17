@@ -1,6 +1,5 @@
 import useScrollAnimation from '../../hooks/useScrollAnimation'
 import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 const PAIN_POINTS = [
   'Seu filho está sempre no celular ou tablet e você não sabe como mudar isso?',
