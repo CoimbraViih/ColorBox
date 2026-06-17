@@ -2,6 +2,8 @@ import HeroSection from './components/sections/HeroSection'
 import CharactersSection from './components/sections/CharactersSection'
 import BenefitsSection from './components/sections/BenefitsSection'
 import TestimonialsSection from './components/sections/TestimonialsSection'
+import UrgencySection from './components/sections/UrgencySection'
+import GuaranteeSection from './components/sections/GuaranteeSection'
 
 export default function App() {
   return (
@@ -10,6 +12,8 @@ export default function App() {
       <CharactersSection />
       <BenefitsSection />
       <TestimonialsSection />
+      <UrgencySection />
+      <GuaranteeSection />
     </main>
   )
 }
