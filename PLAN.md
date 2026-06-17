@@ -54,7 +54,7 @@
 - [x] Footer com CTA final e link de suporte
 - [x] Botão flutuante fixo no mobile (bottom CTA)
 
-**Entrega:** ✅ Página 100% completa
+**Entrega:** ✅ Página 100% completa — https://colorbox-two.vercel.app (PR #6 merged)
 
 ---
 
