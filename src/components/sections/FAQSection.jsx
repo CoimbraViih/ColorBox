@@ -1,67 +1,68 @@
 import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { FAQS } from '../../constants/faqs'
 
-export default function FAQSection() {
-  const [activeIndex, setActiveIndex] = useState(null)
-
-  function toggle(index) {
-    setActiveIndex(activeIndex === index ? null : index)
-  }
+function FAQItem({ faq }) {
+  const [open, setOpen] = useState(false)
 
   return (
-    <section className="bg-gradient-to-b from-purple-50 to-white px-5 py-14">
-      <div className="mx-auto max-w-2xl">
-        <h2 className="text-center text-3xl font-black leading-tight text-gray-800 sm:text-4xl">
-          Ainda tem{' '}
-          <span className="bg-gradient-to-r from-brand-pink to-brand-purple bg-clip-text text-transparent">
-            dúvidas?
-          </span>
+    <div
+      className="overflow-hidden rounded-2xl"
+      style={{
+        background: 'rgba(0,0,0,0.3)',
+        border: `1px solid ${open ? 'rgba(167,139,250,0.5)' : 'rgba(167,139,250,0.2)'}`,
+        transition: 'border-color 0.2s',
+      }}
+    >
+      <button
+        type="button"
+        className="flex w-full items-center justify-between gap-3 px-5 py-4 text-left"
+        onClick={() => setOpen(v => !v)}
+        aria-expanded={open}
+      >
+        <span className="font-bold text-white">{faq.question}</span>
+        <motion.span
+          className="flex-shrink-0 text-purple-300 text-lg"
+          animate={{ rotate: open ? 45 : 0 }}
+          transition={{ duration: 0.2 }}
+        >
+          +
+        </motion.span>
+      </button>
+
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25, ease: 'easeInOut' }}
+          >
+            <p className="px-5 pb-5 text-sm leading-relaxed text-purple-200">
+              {faq.answer}
+            </p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  )
+}
+
+export default function FAQSection() {
+  return (
+    <section
+      className="stars-bg relative overflow-hidden px-5 py-16"
+      style={{ background: 'linear-gradient(160deg, #1e1b4b 0%, #2d1b69 100%)' }}
+    >
+      <div className="relative mx-auto max-w-md">
+        <h2 className="mb-8 text-center text-3xl font-black text-white">
+          Perguntas <span className="gradient-text">Frequentes</span>
         </h2>
-        <p className="mx-auto mt-3 max-w-xl text-center text-base text-gray-500 sm:text-lg">
-          As perguntas mais frequentes das mães que já compraram
-        </p>
 
-        <div className="mt-10 flex flex-col gap-4">
-          {FAQS.map((faq, index) => {
-            const isOpen = activeIndex === index
-            return (
-              <div
-                key={faq.id}
-                className={`overflow-hidden rounded-2xl bg-white shadow-md transition-shadow ${
-                  isOpen ? 'shadow-lg' : ''
-                }`}
-              >
-                <button
-                  type="button"
-                  onClick={() => toggle(index)}
-                  className={`flex w-full items-center justify-between gap-4 px-6 py-5 text-left transition-colors ${
-                    isOpen ? 'border-l-4 border-brand-pink' : 'border-l-4 border-transparent'
-                  }`}
-                >
-                  <span className="text-base font-bold text-gray-800 sm:text-lg">
-                    {faq.question}
-                  </span>
-                  <span
-                    className={`shrink-0 text-2xl font-bold text-brand-purple transition-transform duration-300 ${
-                      isOpen ? 'rotate-45' : 'rotate-0'
-                    }`}
-                  >
-                    +
-                  </span>
-                </button>
-
-                <div
-                  className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                    isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-                  }`}
-                >
-                  <p className="px-6 pb-5 text-sm leading-relaxed text-gray-500 sm:text-base">
-                    {faq.answer}
-                  </p>
-                </div>
-              </div>
-            )
-          })}
+        <div className="flex flex-col gap-3">
+          {FAQS.map(faq => (
+            <FAQItem key={faq.id} faq={faq} />
+          ))}
         </div>
       </div>
     </section>
