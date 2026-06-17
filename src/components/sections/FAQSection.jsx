@@ -32,6 +32,7 @@ export default function FAQSection() {
                 }`}
               >
                 <button
+                  type="button"
                   onClick={() => toggle(index)}
                   className={`flex w-full items-center justify-between gap-4 px-6 py-5 text-left transition-colors ${
                     isOpen ? 'border-l-4 border-brand-pink' : 'border-l-4 border-transparent'

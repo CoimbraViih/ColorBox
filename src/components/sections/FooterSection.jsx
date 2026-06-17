@@ -17,7 +17,7 @@ export default function FooterSection() {
         </div>
 
         <p className="mt-10 text-xs text-gray-600">
-          © 2025 ColorBox. Todos os direitos reservados.
+          © 2026 ColorBox. Todos os direitos reservados.
         </p>
       </div>
     </footer>
