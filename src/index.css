@@ -7,4 +7,54 @@
   --color-brand-purple: #9b59b6;
   --color-brand-orange: #ff8c00;
   --color-cta-green: #00c851;
+  --color-night-bg: #1e1b4b;
+  --color-night-bg2: #2d1b69;
+  --color-night-bg3: #3b0764;
+  --color-gold: #fde68a;
+  --color-neon-purple: #a78bfa;
+}
+
+.stars-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.9) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255,255,255,0.4) 1px, transparent 1px);
+  background-size: 42px 42px, 23px 23px;
+  background-position: 0 0, 14px 12px;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #fde68a, #fb923c, #f472b6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glow-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(48px);
+  pointer-events: none;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 4px 24px rgba(0,200,81,0.5), 0 0 40px rgba(0,200,81,0.2); }
+  50% { box-shadow: 0 4px 36px rgba(0,200,81,0.75), 0 0 64px rgba(0,200,81,0.4); }
+}
+
+.cta-pulse {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+.float-anim {
+  animation: float 3s ease-in-out infinite;
 }
