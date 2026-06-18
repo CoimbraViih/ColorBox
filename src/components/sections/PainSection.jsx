@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion'
 
 const PAIN_POINTS = [
-  { emoji: '📱', title: 'Celular o dia todo', text: 'Seu filho está preso na tela e você não sabe como mudar isso?' },
-  { emoji: '😔', title: 'Tardes sem graça', text: 'As tardes em casa viram uma batalha de "não sei o que fazer"?' },
-  { emoji: '💸', title: 'Cadernos caros', text: 'Atividades criativas custam caro — e acabam em poucos dias?' },
-  { emoji: '🎁', title: 'Sem ideia de presente', text: 'Quer dar algo especial pro seu filho mas sem gastar muito?' },
+  { emoji: '📱', title: 'Celular o dia todo', text: 'Seu filho está preso na tela e você não sabe como tirar sem criar uma guerra em casa?' },
+  { emoji: '😔', title: 'Tardes sem graça', text: 'As tardes em casa viram uma batalha de "não sei o que fazer" e você fica sem resposta?' },
+  { emoji: '💸', title: 'Atividades caras demais', text: 'Cadernos de colorir de qualidade custam caro na papelaria — e acabam em dois dias?' },
+  { emoji: '🎁', title: 'Presente certeiro e barato', text: 'Quer dar algo especial pro seu filho, que ele realmente use, sem gastar muito?' },
 ]
 
 export default function PainSection() {

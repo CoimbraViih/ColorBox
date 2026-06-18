@@ -23,4 +23,10 @@ export const FAQS = [
     answer:
       'Tem sim! Você tem 7 dias de garantia total. Se por qualquer motivo não ficar satisfeita, é só entrar em contato com o suporte da Hotmart e receber 100% do seu dinheiro de volta. Sem perguntas.',
   },
+  {
+    id: 5,
+    question: 'Funciona no celular? Consigo acessar direto pelo WhatsApp?',
+    answer:
+      'Funciona perfeitamente no celular! Após a compra você recebe o link de acesso e pode baixar os PDFs direto no telefone. Dá pra enviar por WhatsApp, salvar na galeria ou imprimir de onde estiver.',
+  },
 ]

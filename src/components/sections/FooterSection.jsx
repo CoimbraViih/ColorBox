@@ -36,10 +36,11 @@ export default function FooterSection() {
             lineHeight: 1.2,
             marginBottom: '8px',
           }}>
-            Oferta Não Vai<br />Durar Para Sempre!
+            Transforme as Tardes<br />
+            <span style={{ color: '#ec4899' }}>da Sua Criança Hoje</span>
           </h2>
           <p style={{ fontSize: '1rem', color: '#f59e0b', fontWeight: 600, marginBottom: '36px' }}>
-            Compre Agora e Garanta 60% OFF 🏷️
+            30 cadernos por R$37 — acesso imediato 🎨
           </p>
 
           {/* Product card */}

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Printer, Infinity as InfinityIcon, Zap } from 'lucide-react'
+import { Printer, Heart, Zap, Smartphone, Users } from 'lucide-react'
 import CtaButton from '../ui/CtaButton'
 
 const BENEFITS = [
@@ -18,11 +18,25 @@ const BENEFITS = [
     text: 'Após a compra, acesso imediato via Hotmart Club. Sem esperar, sem frete, sem complicação.',
   },
   {
-    icon: InfinityIcon,
+    icon: Heart,
     color: '#ec4899',
     bg: 'rgba(236,72,153,0.15)',
     title: '30 Temas Favoritos',
     text: 'Frozen, Barbie, Peppa Pig, Stitch, Moana, Arco-íris e muito mais — personagens que as crianças AMAM.',
+  },
+  {
+    icon: Smartphone,
+    color: '#06b6d4',
+    bg: 'rgba(6,182,212,0.15)',
+    title: 'Funciona em Qualquer Tela',
+    text: 'Celular, tablet ou computador — qualquer aparelho abre PDF. Baixe uma vez e use para sempre, mesmo sem internet.',
+  },
+  {
+    icon: Users,
+    color: '#00C851',
+    bg: 'rgba(0,200,81,0.15)',
+    title: 'Ideal Para Sala de Aula',
+    text: 'Professoras usam com a turma toda. Um único acesso, impressões ilimitadas — atividade garantida para todas as aulas.',
   },
 ]
 

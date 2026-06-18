@@ -17,4 +17,10 @@ export const TESTIMONIALS = [
     text: 'Comprei sem muita expectativa, mas fiquei IMPRESSIONADA. 30 cadernos por R$37? É o melhor investimento que já fiz para minha filha.',
     avatar: null,
   },
+  {
+    name: 'Camila Rodrigues',
+    role: 'Mãe de gêmeos de 5 anos',
+    text: 'Perfeito para dois filhos! Imprimo o mesmo caderno duas vezes e cada um tem o seu. Nunca mais briga por causa de atividade. Recomendo muito!',
+    avatar: null,
+  },
 ]
