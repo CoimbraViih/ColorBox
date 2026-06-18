@@ -87,7 +87,6 @@ export default function FooterSection() {
         {/* Footer bottom */}
         <div style={{ fontSize: '12px', color: 'rgba(255,255,255,0.3)', lineHeight: 2 }}>
           <p>Copyright © 2026 ColorBox — Todos os direitos reservados</p>
-          <p>Suporte: <a href="mailto:viihcoimbra7x@gmail.com" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>viihcoimbra7x@gmail.com</a></p>
         </div>
       </div>
     </section>
