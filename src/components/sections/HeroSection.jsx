@@ -96,7 +96,7 @@ export default function HeroSection() {
         >
           {[
             { img: '/cadernos/lilo.png', rot: '-8deg', delay: 0, size: '110px' },
-            { img: '/cadernos/frozen.png', rot: '0deg', delay: 0.2, size: '130px' },
+            { img: '/cadernos/moana.png', rot: '0deg', delay: 0.2, size: '130px' },
             { img: '/cadernos/barbie.png', rot: '8deg', delay: 0.4, size: '110px' },
           ].map(({ img, rot, delay, size }, i) => (
             <motion.div
