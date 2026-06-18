@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 
-const STORAGE_KEY = 'colorbox_countdown_end'
-const DURATION_MS = 23 * 60 * 60 * 1000 + 59 * 60 * 1000 + 59 * 1000
+const STORAGE_KEY = 'colorbox_countdown_end_v2'
+const DURATION_MS = 15 * 60 * 1000
 
 function getOrCreateEnd() {
   const stored = localStorage.getItem(STORAGE_KEY)

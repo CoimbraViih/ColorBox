@@ -40,7 +40,7 @@ export default function FooterSection() {
             <span style={{ color: '#ec4899' }}>da Sua Criança Hoje</span>
           </h2>
           <p style={{ fontSize: '1rem', color: '#f59e0b', fontWeight: 600, marginBottom: '36px' }}>
-            30 cadernos por R$37 — acesso imediato 🎨
+            De R$ 97,00 por R$ 37,00 — por tempo limitado ⏰
           </p>
 
           {/* Product card */}
