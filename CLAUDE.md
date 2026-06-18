@@ -36,7 +36,10 @@ docs/
 - Sem estado global — componentes isolados, dados via constants
 
 ## Integrações
-- **Hotmart Checkout:** `https://pay.hotmart.com/7914058` — todos os CTAs apontam aqui
+- **Hotmart Checkout (link direto de pagamento):** `https://pay.hotmart.com/I106262108Q` — todos os CTAs apontam aqui
+- **Hotmart Hotlink (página de vendas Hotmart):** `https://go.hotmart.com/I106262108Q`
+- **Página do Produto (com dp=1):** `https://go.hotmart.com/I106262108Q?dp=1`
+- **Produto ID:** 7914058
 - **Meta Pixel:** script injetado via `index.html` `<head>` (ID do pixel a definir pelo cliente)
 - Sem backend — página 100% estática
 
