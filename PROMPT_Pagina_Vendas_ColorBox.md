@@ -8,7 +8,8 @@
 
 Você vai construir a landing page de vendas do **ColorBox**: um kit com **30 cadernos para colorir em PDF** com personagens infantis populares (Frozen, Barbie, Peppa Pig, Moana, Turma da Mônica, LOL Surprise, Stitch, Show da Luna, Arco-íris, entre outros). Preço único de **R$37**, entrega imediata pelo **Hotmart Club**, garantia de 7 dias.
 
-- **Checkout Hotmart:** `https://pay.hotmart.com/7914058`
+- **Checkout Hotmart (link direto de pagamento):** `https://pay.hotmart.com/I106262108Q`
+- **Hotlink (página de vendas Hotmart):** `https://go.hotmart.com/I106262108Q`
 - **Stack:** React + Vite 6 + Tailwind CSS v4 + pnpm
 - **Deploy:** Vercel
 - **Font:** Poppins (Google Fonts)
@@ -272,7 +273,8 @@ Cada card contém:
 
 ```js
 // constants/hotmart.js
-export const HOTMART_CHECKOUT = 'https://pay.hotmart.com/7914058';
+export const HOTMART_CHECKOUT = 'https://pay.hotmart.com/I106262108Q';
+export const HOTMART_HOTLINK  = 'https://go.hotmart.com/I106262108Q';
 
 // Evento de conversão ao clicar em CTA:
 // fbq('track', 'InitiateCheckout');

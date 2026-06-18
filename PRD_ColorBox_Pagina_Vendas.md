@@ -90,7 +90,10 @@ Página de vendas estilo Hotmart — cores vibrantes (rosa, roxo, laranja), tipo
 
 ## 9. INTEGRAÇÕES
 
-- **Hotmart Checkout:** Todos os CTAs apontam para o link de checkout do produto ID 7914058
+- **Hotmart Checkout (link direto de pagamento):** `https://pay.hotmart.com/I106262108Q` — todos os CTAs apontam aqui
+- **Hotmart Hotlink (página de vendas Hotmart):** `https://go.hotmart.com/I106262108Q`
+- **Página do Produto:** `https://go.hotmart.com/I106262108Q?dp=1`
+- **Produto ID:** 7914058
 - **Meta Pixel:** Script do Facebook Pixel no `<head>` para rastreamento de conversões (Meta Ads)
 - **Hotmart Club:** Entrega do produto após pagamento confirmado
 
