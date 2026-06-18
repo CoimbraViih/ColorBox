@@ -59,10 +59,24 @@
 ---
 
 ## Milestone 6 — Polimento e Performance
-- [ ] Revisar copy em todas as seções
-- [ ] Otimizar imagens (WebP, lazy loading)
-- [ ] Lighthouse score mobile ≥ 85
-- [ ] Testar fluxo completo: landing → checkout Hotmart
-- [ ] Configurar domínio customizado na Vercel
+- [x] Revisar copy em todas as seções (Pain, Benefits, Footer, FAQ +1, Testimonials +1)
+- [x] Lazy loading nas imagens dos cadernos (NotebookCard já tinha `loading="lazy"`)
+- [x] Corrigir URL Hotmart em `constants/links.js` (`/7914058` → `/I106262108Q`)
+- [x] Ativar Meta Pixel ID `1008552538564701` via variável de ambiente Vite
+- [x] Criar `.env` / `.env.example` + atualizar `.gitignore` (Pixel ID fora do git)
+- [x] Space Grotesk adicionado ao `index.html` (fonte usada mas nunca declarada)
+- [x] `<noscript>` Meta Pixel movido para `<body>` (quebrava build Vite)
+- [x] HeroSection: `frozen.png` (inexistente) → `moana.png`
+- [x] BenefitsSection: 5 benefícios completos (era 3) + ícone corrigido
+- [x] Testar fluxo completo: landing → checkout Hotmart ✓
+- [x] Deploy produção na Vercel — PR #7 mergeado
 
-**Entrega:** Página pronta para tráfego pago
+**Entrega:** ✅ Página pronta para tráfego pago — https://colorbox-two.vercel.app (PR #7 merged)
+
+---
+
+## Próximos Passos (Pós-Lançamento)
+- [ ] Configurar domínio customizado na Vercel
+- [ ] Lighthouse score mobile ≥ 85 (auditoria após domínio customizado)
+- [ ] Configurar Meta Pixel `VITE_META_PIXEL_ID` nos ambientes Preview/Development na Vercel
+- [ ] Validar recebimento de eventos no Facebook Events Manager
