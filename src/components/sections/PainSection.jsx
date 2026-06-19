@@ -101,7 +101,7 @@ export default function PainSection() {
             fontWeight: 800,
             color: '#fde68a',
           }}>
-            Todos esses problemas têm uma solução por R$37 🎉
+            De R$ 97,00 por{' '}<span style={{ color: '#00C851' }}>R$ 37,00</span>{' '}— por tempo limitado ⏰
           </p>
         </motion.div>
       </div>
