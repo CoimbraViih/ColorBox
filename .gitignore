@@ -1,0 +1,25 @@
+# dependências e build
+node_modules/
+dist/
+.vercel/
+
+# logs
+*.log
+
+# assets pesados fora do repo
+*.zip
+PDFs_ColorBox/
+Desenhos Para Colorir*/
+ziSjjPfb
+
+# sistema
+.DS_Store
+Thumbs.db
+
+# ambiente — .env.example é commitado (referência), os demais não
+.env
+.env.local
+.env.*.local
+.env.production
+
+.vercel
